@@ -10,15 +10,12 @@ json_file = open('inventory.json', encoding='utf-8-sig')
 data = json.loads(json_file.read())
 driver = webdriver.Chrome()
 driver.set_window_position(-10000, 0)
-failed = False
+failed = False #if failed is true, then program will instead use Google Books API to find ISBN
 
 for i in range(0, len(data)):
     failed = False
-    #print(data[i]['Book Title'])
 
     driver.get("https://hub.lexile.com/find-a-book/search")
-    #assert "Python" in driver.title
-    #elem = driver.find_element_by_name("q")
     driver.implicitly_wait(1.5)
     search_bar = driver.find_element(By.XPATH, '/html/body/div[2]/div[2]/div[2]/div[2]/main/div/form/div/div[2]/div[1]/div/div/input')
     search_bar.send_keys(str(data[i]['Book Title']).replace("\n", ""))
@@ -85,12 +82,9 @@ for i in range(0, len(data)):
             title = title.replace("\\n", "")
             whitelist = set(string.ascii_lowercase + string.ascii_uppercase + string.digits + " " + "," + "+" + "'")
             title = ''.join(c for c in title if c in whitelist)
-            #print(title)
             query = str("https://www.googleapis.com/books/v1/volumes?q=intitle:" + title)
-            #print(query)
             resp = urlopen(query)
             book_data = json.load(resp)
-            #print(book_data)
             isbn = book_data["items"][0]["volumeInfo"]["industryIdentifiers"][0]["identifier"]  # Change the [0] to [1] if want ISBN_10 instead
             data[i]["Lexile Measure"] = "N/A"
             print(data[i]['Book Title'] + "'s Lexile measure: ", data[i]["Lexile Measure"])
