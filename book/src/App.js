@@ -29,14 +29,14 @@ function App() {
             return (
             <div className='tile' key={key}>
                 <img src={logo} />
-                <b><p id='titl'>{truncate(book.title, 50)}</p></b>
+                <b><p id='titl'>{truncate(book.title, 60)}</p></b>
                 <p>By {truncate(book.author, 80)}</p>
                 <p>Grade Level: {book.grade}</p>
                 <p>ISBN: {book.isbn}</p>
                 <div className='button-wrapper'>
-                  <button onClick={()=>setCount(count-1)}>–</button>
-                  <p id='available'>{book.copies}</p>
-                  <button onClick={()=>setCount(count+1)}>+</button>
+                  <button onClick={() => setCount(book.copies > 0 ? book.copies -= 1 : 0)}>–</button>
+                    <p id='available'>{book.copies}</p>
+                  <button onClick={()=>setCount(book.copies +=1)}>+</button>
                 </div>
             </div>
             );
