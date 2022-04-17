@@ -1,0 +1,44 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.App input {
+  margin-top: 20px;
+  width: 350px;
+  height: 40px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.tiles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 25%;
+  height: 500px;
+}
+
+p {
+  margin: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
