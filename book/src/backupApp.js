@@ -19,23 +19,25 @@ function App() {
         />
             
         <div className='tiles'>
-            {json.filter((book) => {
+            {json.filter((val) => {
               if (searchTerm == "") {
-                return book;
-              } else if (book.title.toString().toLowerCase().includes(searchTerm.toLowerCase()) || book.author.toString().toLowerCase().includes(searchTerm.toLowerCase())) {
-                return book;
+                return val;
+              } else if (val.title.toString().toLowerCase().includes(searchTerm.toLowerCase())) {
+                return val;
               }
-            }).map((book, key) => {
+            }).map((val, key) => {
             return (
             <div className='tile' key={key}>
                 <img src={logo} />
-                <b><p id='titl'>{truncate(book.title, 50)}</p></b>
-                <p>By {truncate(book.author, 80)}</p>
-                <p>Grade Level: {book.grade}</p>
-                <p>ISBN: {book.isbn}</p>
+                <div className='info'>
+                    <b><p>{truncate(val.title, 70)}</p></b>
+                    <p>By {truncate(val.author, 100)}</p>
+                    <p>Grade Level: {val.grade}</p>
+                    <p>ISBN: {val.isbn}</p>
+                </div>
                 <div className='button-wrapper'>
                   <button onClick={()=>setCount(count-1)}>–</button>
-                  <p id='available'>{book.copies}</p>
+                  <p id='available'>{val.copies}</p>
                   <button onClick={()=>setCount(count+1)}>+</button>
                 </div>
             </div>

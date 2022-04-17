@@ -11,13 +11,19 @@
   height: 40px;
   font-size: 20px;
   padding-left: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 10px 10px gray;
 }
+
 
 .tiles {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 8%;
+  margin-right: 8%;
   width: 100%;
 }
 
@@ -26,8 +32,10 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 25%;
-  height: 500px;
+  align-items: center;
+  min-width: 0px;
+  width: 20%;
+  margin: 8px;
 }
 
 p {
@@ -36,9 +44,64 @@ p {
   text-align: center;
 }
 
+.info {
+  display: -webkit-box;
+  width: 100%;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .title {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
+* {
+  line-height: 0.5;
+}
 
+#titl {
+  height: 20px;
+  line-height: 0.8;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+button {
+  border: none;
+  background-color: white;
+  box-shadow: 0px 0px 10px gray;
+  font-weight: bold;
+  font-size: 1rem;
+  color: inherit;
+  border-radius: 30%;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  outline: none;
+  align-items: center;
+  transition:
+    background-color 250ms ease-in-out,
+    transform 50ms ease-in-out;
+}
+
+#available {
+  font-size: medium;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  #titl {
+    height: 50px;
+  }
+}
